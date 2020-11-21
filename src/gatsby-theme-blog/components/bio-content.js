@@ -1,18 +1,9 @@
-import React from "react"
-import { Styled } from "theme-ui"
-
-/**
- * Change the content to add your own bio
- */
-
-export default function Bio() {
-  return (
-    <>
-      This is where <Styled.a href="http://example.com/">your name</Styled.a>
-      {` `}
-      goes.
-      <br />
-      Or whatever, you make the rules.
-    </>
-  )
-}
+import React from 'react';
+export default ({ author }) => (
+  <>
+    {author}
+    <br />
+    元ネトゲ廃人でwebエンジニアです。<br />
+    関心事は 業務改善 組織改善 DDD Scrum です。<br />
+  </>
+);

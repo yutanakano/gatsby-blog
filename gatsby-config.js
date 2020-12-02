@@ -4,6 +4,7 @@ module.exports = {
       resolve: `gatsby-theme-blog`,
       options: {},
     },
+    `gatsby-theme-blog-darkmode`,
   ],
   // Customize your site metadata:
   siteMetadata: {

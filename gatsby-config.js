@@ -10,6 +10,7 @@ module.exports = {
     title: `生存戦略しましょうか`,
     author: `yutanakano_net`,
     description: `全人類同時接続数No1のバトルロワイヤル人生ゲームを生き残れ!`,
+    siteUrl: `https://yutanakano.net`,
     social: [
       {
         name: `twitter`,

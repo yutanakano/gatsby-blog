@@ -1,6 +1,12 @@
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        icon: `content/assets/icon.png`,
+      },
+    },
+    {
       resolve: `gatsby-theme-blog`,
       options: {},
     },

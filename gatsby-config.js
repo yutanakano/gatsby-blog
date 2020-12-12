@@ -16,7 +16,7 @@ module.exports = {
   siteMetadata: {
     title: `生存戦略しましょうか`,
     author: `yutanakano_net`,
-    description: `全人類同時接続数No1のバトルロワイヤル人生ゲームを生き残れ!`,
+    description: `全人類同時接続数No.1!バトルロイヤルゲームを生き残れ!`,
     siteUrl: `https://yutanakano.net`,
     social: [
       {

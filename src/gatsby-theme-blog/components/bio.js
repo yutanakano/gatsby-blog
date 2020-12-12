@@ -15,7 +15,7 @@ const Bio = () => {
   const data = useStaticQuery(bioQuery)
   const {
     site: {
-      siteMetadata: { author },
+      siteMetadata: { author, description },
     },
     avatar,
   } = data
@@ -47,7 +47,7 @@ const Bio = () => {
         />
       )}
       <Styled.div>
-        <BioContent author={author}/>
+        <BioContent author={author} description={description}/>
       </Styled.div>
     </Flex>
   )

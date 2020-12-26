@@ -35,24 +35,24 @@ const Post = ({
       }
       imageAlt={post.imageAlt}
     />
-    <main>
+    <main className='container mx-auto flex-grow p-4'>
       <article>
         <header>
           <PostHero post={post} />
-          <PostTitle>{post.title}</PostTitle>
           <PostDate>{post.date}</PostDate>
+          <PostTitle>{post.title}</PostTitle>
         </header>
-        <section>
+        <section className='p-4'>
           <MDXRenderer>{post.body}</MDXRenderer>
         </section>
       </article>
+      <Twitter
+        url={location.href}
+        shareText={post.title}
+      />
+      <Facebook url={location.href} />
+      <PostFooter {...{ previous, next }} />
     </main>
-    <Twitter
-      url={location.href}
-      shareText={post.title}
-    />
-    <Facebook url={location.href} />
-    <PostFooter {...{ previous, next }} />
   </Layout>
 )
 

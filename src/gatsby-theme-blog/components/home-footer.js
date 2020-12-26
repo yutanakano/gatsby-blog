@@ -1,16 +1,10 @@
-import React, { Fragment } from "react"
-import { Styled, css } from "theme-ui"
+import React from "react"
 
-const Footer = ({ socialLinks }) => (
-  <footer
-    css={css({
-      mt: 4,
-      pt: 3,
-    })}
-  >
+const Footer = () => (
+  <footer className='w-full text-center border-t border-grey p-4 pin-b bg-gray-500'>
     © {new Date().getFullYear()}, 
     {` `}
-    <Styled.a href="https://yutanakano.net/">yutanakano</Styled.a>
+    <span href="https://yutanakano.net/">yutanakano</span>
   </footer>
 )
 export default Footer

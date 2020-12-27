@@ -9,9 +9,6 @@ import PostDate from "../../../node_modules/gatsby-theme-blog/src/components/pos
 import PostFooter from "../../../node_modules/gatsby-theme-blog/src/components/post-footer"
 import PostHero from "../../../node_modules/gatsby-theme-blog/src/components/post-hero"
 
-import { Twitter } from 'react-sharingbuttons'
-import { Facebook } from 'react-sharingbuttons'
-import 'react-sharingbuttons/dist/main.css'
 
 const Post = ({
   data: {
@@ -46,11 +43,6 @@ const Post = ({
           <MDXRenderer>{post.body}</MDXRenderer>
         </section>
       </article>
-      <Twitter
-        url={location.href}
-        shareText={post.title}
-      />
-      <Facebook url={location.href} />
       <PostFooter {...{ previous, next }} />
     </main>
   </Layout>

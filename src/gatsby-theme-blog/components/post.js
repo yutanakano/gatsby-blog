@@ -9,6 +9,7 @@ import PostDate from "../../../node_modules/gatsby-theme-blog/src/components/pos
 import PostFooter from "../../../node_modules/gatsby-theme-blog/src/components/post-footer"
 import PostHero from "../../../node_modules/gatsby-theme-blog/src/components/post-hero"
 
+import ShareButton from '../../components/ShareButton'
 
 const Post = ({
   data: {
@@ -43,6 +44,7 @@ const Post = ({
           <MDXRenderer>{post.body}</MDXRenderer>
         </section>
       </article>
+      <ShareButton url={location.href} title={post.title} />
       <PostFooter {...{ previous, next }} />
     </main>
   </Layout>

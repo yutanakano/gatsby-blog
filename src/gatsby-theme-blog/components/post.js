@@ -8,6 +8,7 @@ import PostTitle from "../../../node_modules/gatsby-theme-blog/src/components/po
 import PostDate from "../../../node_modules/gatsby-theme-blog/src/components/post-date"
 import PostFooter from "../../../node_modules/gatsby-theme-blog/src/components/post-footer"
 import PostHero from "../../../node_modules/gatsby-theme-blog/src/components/post-hero"
+import Footer from "./../../../node_modules/gatsby-theme-blog/src/components/home-footer"
 
 import ShareButton from '../../components/ShareButton'
 
@@ -47,6 +48,7 @@ const Post = ({
       <ShareButton url={location.href} title={post.title} />
       <PostFooter {...{ previous, next }} />
     </main>
+    <Footer/>
   </Layout>
 )
 

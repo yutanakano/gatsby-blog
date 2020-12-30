@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function Navbar({ fixed }) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+
+export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -9,7 +13,7 @@ export default function Navbar({ fixed }) {
           <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
             <a
               className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
-              href="#pablo"
+              href="/"
             >
               生存戦略しましょうか
             </a>
@@ -18,7 +22,10 @@ export default function Navbar({ fixed }) {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <i className="fas fa-bars"></i>
+              <FontAwesomeIcon
+                color="#333"
+                size="2m"
+                icon={faBars} />
             </button>
           </div>
           <div
@@ -30,27 +37,19 @@ export default function Navbar({ fixed }) {
           >
             <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Share</span>
+                <a href="https://github.com/yutanakano">
+                  <FontAwesomeIcon
+                    color="#333"
+                    size="2x"
+                    icon={faGithubSquare} />
                 </a>
               </li>
               <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Tweet</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i><span className="ml-2">Pin</span>
+                <a href="https://twitter.com/yutanakano_net">
+                  <FontAwesomeIcon
+                    color="#3eaded"
+                    size="2x"
+                    icon={faTwitterSquare} />
                 </a>
               </li>
             </ul>

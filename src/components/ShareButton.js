@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {
-    FacebookShareButton,
-    FacebookIcon,
-    TwitterShareButton,
-    TwitterIcon
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon
 } from 'react-share';
 
 export default ({
@@ -17,10 +17,10 @@ export default ({
     </div>
     <div className="flex justify-center">
         <FacebookShareButton url={href}>
-        <FacebookIcon size={64} round />
+          <FacebookIcon size={64} round />
         </FacebookShareButton>
         <TwitterShareButton title={title} via={ 'yutanakano_net' } url={href} >
-        <TwitterIcon size={64} round />
+          <TwitterIcon size={64} round />
         </TwitterShareButton>
     </div>
   </>

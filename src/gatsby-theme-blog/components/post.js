@@ -45,7 +45,7 @@ const Post = ({
           <MDXRenderer>{post.body}</MDXRenderer>
         </section>
       </article>
-      <ShareButton url={location.href} title={post.title} />
+      <ShareButton location={location} title={post.title} />
       <PostFooter {...{ previous, next }} />
     </main>
     <Footer/>

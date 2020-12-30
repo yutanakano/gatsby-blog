@@ -1,8 +1,5 @@
 import React from 'react';
-
 import Image from "gatsby-image"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 
 export default ({ avatar, author, description }) => (
   <>

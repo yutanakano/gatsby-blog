@@ -22,9 +22,9 @@ module.exports = {
   // Customize your site metadata:
   siteMetadata: {
     title: `生存戦略しましょうか`,
-    author: `yutanakano_net`,
+    author: `yutanakano`,
     description: `全人類同時接続数No.1!バトルロイヤルゲームを生き残れ!`,
-    siteUrl: `https://yutanakano.net`,
+    siteUrl: `https://yutanakano.jp`,
     social: [
       {
         name: `twitter`,

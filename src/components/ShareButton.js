@@ -14,12 +14,16 @@ const ShareButton = ({title, slug}) => {
       query {
         site {
           siteMetadata {
+            author
             siteUrl
           }
         }
       }
     `
   );
+  const twitterAccount = () => {
+    return site.siteMetadata.author + '_jp'
+  }
   const url = (slug) => {
     return site.siteMetadata.siteUrl + slug
   }
@@ -32,7 +36,7 @@ const ShareButton = ({title, slug}) => {
           <FacebookShareButton url={url(slug)}>
             <FacebookIcon size={64} round />
           </FacebookShareButton>
-          <TwitterShareButton title={title} via={ 'yutanakano_net' } url={url(slug)}>
+          <TwitterShareButton title={title} via={ twitterAccount() } url={url(slug)}>
             <TwitterIcon size={64} round />
           </TwitterShareButton>
       </div>

@@ -1,15 +1,8 @@
 import React from "react"
-import Image from "gatsby-image"
+import Hero from "../../components/post/Hero"
 
 const PostHero = ({ post }) => (
-  <>
-    {post?.image?.childImageSharp && (
-      <Image
-        fluid={post.image.childImageSharp.fluid}
-        alt={post.imageAlt ? post.imageAlt : post.excerpt}
-      />
-    )}
-  </>
+  <Hero post={post}/>
 )
 
 export default PostHero

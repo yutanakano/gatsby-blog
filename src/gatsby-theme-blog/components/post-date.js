@@ -1,10 +1,8 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
+import Date from "../../components/post/Date"
 
 const PostDate = (props) => (
-  <p className='text-xs mt-4'
-    {...props}
-  />
+  <Date {...props}/>
 )
 
 export default PostDate

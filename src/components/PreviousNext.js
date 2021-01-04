@@ -2,8 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import { css, Styled } from "theme-ui"
 
-export default ({ previous, next }) => (
-  <>
+const PreviousNext = ({ previous, next }) => {
+  return(
+    <>
     {(previous || next) && (
       <div
         className="max-w-full mx-auto"
@@ -31,4 +32,7 @@ export default ({ previous, next }) => (
       </div>
     )}
   </>
-)
+  );
+}
+
+export default PreviousNext;

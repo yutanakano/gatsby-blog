@@ -2,13 +2,12 @@ import React from "react"
 
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Layout from "../../../node_modules/gatsby-theme-blog/src/components/layout"
+import Layout from "./layout"
 import SEO from "../../../node_modules/gatsby-theme-blog/src/components/seo"
-import PostTitle from "../../../node_modules/gatsby-theme-blog/src/components/post-title"
-import PostDate from "../../../node_modules/gatsby-theme-blog/src/components/post-date"
-import PostFooter from "../../../node_modules/gatsby-theme-blog/src/components/post-footer"
-import PostHero from "../../../node_modules/gatsby-theme-blog/src/components/post-hero"
-import Footer from "./../../../node_modules/gatsby-theme-blog/src/components/home-footer"
+import PostTitle from "./post-title"
+import PostDate from "./post-date"
+import PostFooter from "./post-footer"
+import PostHero from "./post-hero"
 
 import ShareButton from '../../components/ShareButton'
 
@@ -48,7 +47,6 @@ const Post = ({
       <ShareButton title={post.title} slug={post.slug}/>
       <PostFooter {...{ previous, next }} />
     </main>
-    <Footer/>
   </Layout>
 )
 

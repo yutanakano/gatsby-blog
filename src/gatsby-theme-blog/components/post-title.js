@@ -1,5 +1,10 @@
 import React from "react"
+import Title from "../../components/post/Title";
 
-const PostTitle = (props) => <h1 className='text-3l font-semibold' {...props} />
+const PostTitle = (props) => {
+  return(
+    <Title {...props}/>
+  );
+}
 
 export default PostTitle

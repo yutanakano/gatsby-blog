@@ -1,6 +1,8 @@
 import React from "react"
 
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+import Markdown from "../../components/post/Markdown"
 
 import Layout from "./layout"
 import SEO from "../../../node_modules/gatsby-theme-blog/src/components/seo"
@@ -41,7 +43,9 @@ const Post = ({
           <PostTitle>{post.title}</PostTitle>
         </header>
         <section className='p-4'>
-          <MDXRenderer>{post.body}</MDXRenderer>
+          <MDXProvider components={Markdown}>
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </MDXProvider>
         </section>
       </article>
       <ShareButton title={post.title} slug={post.slug}/>

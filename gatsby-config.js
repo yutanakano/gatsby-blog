@@ -29,7 +29,7 @@ module.exports = {
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/yutanakano_net`,
+        url: `https://twitter.com/yutanakano_jp`,
       },
       {
         name: `github`,

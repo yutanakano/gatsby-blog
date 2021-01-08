@@ -1,6 +1,6 @@
 import React from "react"
 
-const Markdown = {
+const Article = {
     h1: props => <h1 className='3xl font-semibold' {...props} />,
     h2: props => <h2 className='2xl font-semibold' {...props} />,
     h3: props => <h3 className='xl font-semibold' {...props} />,
@@ -9,4 +9,4 @@ const Markdown = {
     li: props => <li className='pl-4' {...props} />
 }
 
-export default Markdown
+export default Article;

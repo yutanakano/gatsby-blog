@@ -2,7 +2,7 @@ import React from "react"
 
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
-import Layout from "../../components/post/Layout"
+import PostLayout from "../../components/post/Layout"
 
 import Layout from "./layout"
 import SEO from "../../../node_modules/gatsby-theme-blog/src/components/seo"
@@ -43,7 +43,7 @@ const Post = ({
           <PostTitle>{post.title}</PostTitle>
         </header>
         <section className='p-4'>
-          <MDXProvider components={Layout}>
+          <MDXProvider components={PostLayout}>
             <MDXRenderer>{post.body}</MDXRenderer>
           </MDXProvider>
         </section>

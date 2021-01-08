@@ -25,6 +25,7 @@ module.exports = {
     author: `yutanakano`,
     description: `全人類同時接続数No.1!バトルロイヤルゲームを生き残れ!`,
     siteUrl: `https://yutanakano.jp`,
+    image: `content/assets/icon.png`,
     social: [
       {
         name: `twitter`,

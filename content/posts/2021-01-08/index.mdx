@@ -1,0 +1,129 @@
+---
+title: ブログ作り直したい病を発症した俺は
+date: 2021-01-08
+image: ./gesyutaruto_houkai_gestaltzerfall.png
+imageAlt: ブログ作り直したい病を発症した俺は
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+2020年の暮に突然ある病を発症しました。
+
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">年末までにブログ作り直したい病を発症してるアカウントです</p>— yuta nakano (@yutanakano_jp) <a href="[https://twitter.com/yutanakano_jp/status/1341260685062230016?ref_src=twsrc^tfw](https://twitter.com/yutanakano_jp/status/1341260685062230016?ref_src=twsrc%5Etfw)">December 22, 2020</a></blockquote> <script async src="[https://platform.twitter.com/widgets.js](https://platform.twitter.com/widgets.js)" charset="utf-8"></script>
+
+そして、突然ブログを作り直し始めた。
+
+## ブログ作り直したい病を発症した俺は
+
+- なぜブログを作り直したいのか
+- 前回の反省
+- どうするのか
+
+### なぜブログを作り直したいのか
+
+前回はヘッドレスCMSを採用して、これでブログ作り変えてもフロント用意するだけでいいって最高かよ。
+
+と高ぶっていたのですが、冷静に考えてみれば私個人のチラ裏なんてMarkdownで十分では？という思いが沸々と湧いてきたのがきっかけ。
+
+というのもブログを投稿するのにCMS開くのがめんどくさい。
+
+github上でサクッと書いて終わりにしたいんですよね。
+
+もしくは普段使ってるエディタが使いたい。
+
+「それなら自分で投稿用のフォーム作って使いやすいようにすればいいじゃない？」
+
+しかし、考えてほしい。普段使ってる便利なToolたちを使うほうが生産的ではないんだろうか。
+
+そして、最後に最小のテーマを使ってオレオレ手法で作ってしまった点。ずっともやもやしてた。
+
+やりたいことに応じてテーマが用意されているのに何故こんな愚行を犯してしまったのか。
+
+当時の私は「最小のテーマで作れたらあとはだいたいなんでもできちゃうんじゃね？」なんと愚か。
+
+とにかく過去の愚行を清算したい。ごめんもう許して。
+
+## 前回の反省
+
+ルールを明文化せずに形にすることを優先してしまったことによりメンテナンスしずらいクソオブクソになってしまった。
+
+## どうするのか
+
+過去の経験からオレオレルールは破綻しやすいのを知っているので、公式のテーマを軸に設計します。
+Gatsby.js 公式のブログ用テーマ `gatsby-theme-blog` を採用しました。
+公式がテーマまで用意してくれてるなんて最高オブ最高。
+
+テーマに乗っけた構成が以下になります。
+
+- `src` 配下の構成です
+
+```
+.
+├── components
+│   ├── Copyright.js
+│   └── post
+│       ├── Date.js
+│       ├── Hero.js
+│       ├── Layout.js
+│       ├── PreviousNext.js
+│       ├── ShareButton.js
+│       └── Title.js
+├── gatsby-plugin-theme-ui
+│   └── index.js
+├── gatsby-theme-blog
+│   └── components
+│       ├── bio-content.js
+│       ├── bio.js
+│       ├── header.js
+│       ├── home-footer.js
+│       ├── layout.js
+│       ├── post-date.js
+│       ├── post-footer.js
+│       ├── post-hero.js
+│       ├── post-link.js
+│       ├── post-list.js
+│       ├── post-title.js
+│       ├── post.js
+│       ├── posts.js
+│       └── seo.js
+├── pages
+│   └── 404.js
+└── styles
+    └── tailwind.css
+```
+
+#### シャドーイングの活用
+
+- テーマごとのディレクトリ構成があるので基本的にそれをそのまま使う。
+- シャドーイングの中身を `src/components` へ切り出します
+- 必要なcomponentを `src/components` からインポートして使う
+- シャドーイングしたcomponentに機能は追加しない
+- シャドーイングしたcomponentはレイアウトのみ編集する
+
+#### src/componentsの活用
+
+- 各シャドーイングの機能をcomponentとして保持
+- 機能の追加及び拡張はこのcomponentsの中のみで行う
+- コンテキストが明確なコンポーネントは集約する
+
+#### それぞれの活用を行うと何が嬉しいの
+
+- シャドーイングさえ知っていれば共通の認識で開発することができるのとキャッチアップがしやすい。
+- 新しいblogを作る時も同じような構成を使い回しやすい。
+- それぞれの関心事と責務を切り離せる。
+
+#### src/componentsの今後
+
+- デザインとロジックを分離させたい
+- `useStaticQuery` 便利だけどロジックとクエリが密結合してるので分離させたい
+
+#### 悩んでいること
+
+シャドーイング自体はすごい便利ですがですが、例えば `posts` と `post` を構成するcomponentが同階層に横並びになってるところ
+
+これもうちょっとどうにかならなかったんだろうか・・・
+
+## さいごに
+Notionから投稿できるようになれば一番いいのになぁと思ったりしています。

@@ -1,0 +1,52 @@
+---
+title: Gatsby.jsにTailwindCSSを使ってリストを作る方法
+date: 2021-01-11
+image: ./document_list.png
+imageAlt: Gatsby.jsにTailwindCSSを使ってリストを作る方法
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsを使ってMarkdownを装飾することができるようになった話は、[こちら](https://yutanakano.jp/2021-01-10/) に書きました。
+
+しかし、 `TailwindCSS` を使ってリストをネストした表現のやり方を見つけられずどハマりしました。
+
+ググっても中々知りたいことにたどり着けなかったのでメモを残しておきます。
+
+## Gatsby.jsにTailwindCSSを使ってリストを作る方法
+
+- 前提
+- 簡単に出来るリストの作り方
+
+### 前提
+
+- `gatsby-theme-blog` を利用している
+- `TailwindCSS` を利用している
+- `MDXProvider` を使って装飾している
+
+### 簡単に出来るリストの作り方
+
+- `MDXProvider` を使っている。
+- リストのインデントの表現は、[こちら](https://tailwindcss.com/docs/padding#class-reference)
+- 実際に作ってみたものが以下になります。
+
+```jsx
+import React from "react"
+
+const Layout = {
+    ul: props => <ul className='list-disc list-inside' {...props} />,
+    li: props => <li className='pl-4' {...props} />
+}
+
+export default Layout;
+```
+
+## さいごに
+
+ネストの表現を難しく考えすぎていました。
+
+実際はすごくシンプルに表現することができました。
+
+なかなか実現したいことが見つからずに試行錯誤しました。

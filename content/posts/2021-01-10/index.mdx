@@ -1,0 +1,71 @@
+---
+title: MDXを装飾する方法
+date: 2021-01-10
+image: ./nail_art_french.png
+imageAlt: MDXを装飾する方法
+---
+
+## はじめに
+中野区在住の中野です。
+
+Gatsby.jsのMDXをレンダリングしてもタグが装飾されてない問題があり、解決したのでメモとして残しておきます。
+
+## MDXを装飾する方法
+- 前提
+- どうやるのか
+- 用意するもの
+- LayoutComponentを作成
+- LayoutComponentを利用する
+
+### 前提
+- `gatsby-theme-blog` を利用している
+
+### どうやるのか
+`MDXProvider` を使って、タグのレンダリングを置き換える必要があります。
+
+置き換える方法は定義したcomponentを作成し、 `MDXProvider` に渡すことで行えます。
+
+`MDXProvider` を使う場所は `post` の中だけなので明示的にインポートします。
+
+### 用意するもの
+- 置き換えたいタグを定義しているcomponent
+  - ここでは `LayoutComponent` と呼ぶようにします
+
+### LayoutComponentを作成
+
+- `src/components/post/Layout.js`
+
+```
+import React from "react"
+import スタイルシートへのパス
+
+const Layout = {
+    h1: props => <h1 className='クラス名' {...props} />,
+    h2: props => <h2 className='クラス名' {...props} />
+}
+
+export default Layout;
+```
+
+### LayoutComponentを利用する
+
+- MDXProviderに置き換えたいタグを定義しているLayoutComponentがテーマのLayoutと名前がコンフリクトするために別名でインポートしています
+
+```
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
+import PostLayout from "../../components/post/Layout"
+
+--- 省略 ---
+<MDXProvider components={PostLayout}>
+  <MDXRenderer>{post.body}</MDXRenderer>
+</MDXProvider>
+--- 省略 ---
+```
+
+これでビルドすると装飾された記事ページが表示されます。
+
+## さいごに
+MDXProviderを利用する方法を知らなかったのでpost.jsにMarkdownのスタイルシートをインポートする。
+
+というダサい方法しかおもいつかなかったのですがかっこいいソリューションが見つかったよかったです。

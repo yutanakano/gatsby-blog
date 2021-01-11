@@ -1,0 +1,40 @@
+---
+title: Gatsby.jsにデフォルトOGPのイメージを設定する
+date: 2021-01-12
+image: ./../../assets/icon.png
+imageAlt: Gatsby.jsにデフォルトOGPのイメージを設定する
+---
+
+## はじめに
+中野区在住の中野です。
+
+ブログをTwitterに投稿するとアイキャッチが表示される設定ができるようになったのでメモを残しておきます。
+
+## Gatsby.jsにデフォルトOGPのイメージを設定する
+- 前提
+- やり方
+
+### 前提
+- `gatsby-theme-blog` を利用している
+
+### やり方
+私の場合は `content/assets` に `icon.png` を配置しました。
+
+Gatsby.jsでは画像をインポートして使います。
+
+`src/gatsby-theme-blog/components/posts.js` 内でインポートします。
+
+最後に `SEO` componentに渡すだけです。
+
+```
+import SEO from "./../../../node_modules/gatsby-theme-blog/src/components/seo"
+import TwitterCard from "../../../content/assets/icon.png"
+--- 省略 ---
+<SEO title="Home" imageSource={TwitterCard} />
+```
+
+これでリリースすればTwitterにアイキャッチが表示されます。
+
+## さいごに
+
+gatsby_config.jsなどで設定するのかと思ったら `SEO` に渡すだけでした。

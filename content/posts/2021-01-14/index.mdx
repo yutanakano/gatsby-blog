@@ -1,0 +1,70 @@
+---
+title: Vercelのシークレットを削除する
+date: 2021-01-14
+image: ./naisyo_woman.png
+imageAlt: Vercelのシークレットを削除する
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Vercelで遊んでいるうちに不要なシークレットが溜まってました。
+
+邪魔なので削除していく方法を残しておきたいと思います。
+
+## Vercelのシークレットを削除する
+- cliをインストールする
+- 認証
+- シークレットの基本操作
+- 実際に叩いたコマンド
+
+### cliをインストールする
+
+```
+npm i -g vercel
+```
+
+### 認証
+
+- メール認証(GitHub のプライマリのメールアドレスを答える。)
+
+```
+vercel login [メールアドレス]
+```
+
+### シークレットの基本操作
+
+- シークレットの一覧表示
+
+```
+vercel secrets list
+```
+
+- シークレットを追加
+
+```
+vercel secrets add [secret-name] [secret-value]
+```
+
+- シークレット名を更新
+
+```
+vercel secrets rename [old-name] [new-name]
+```
+
+- シークレットを削除
+
+```
+vercel secrets remove [secret-name]
+```
+
+### 実際に叩いたコマンド
+
+```
+vercel secrets list
+vercel secrets remove hoge
+```
+
+## さいごに
+サービス内部で削除できるのかと思い探してみたのですが見つからず [ドキュメント](https://vercel.com/docs/cli#commands/secrets) 読んでたらコマンドでやることを知りました。

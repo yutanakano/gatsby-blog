@@ -21,22 +21,18 @@ const ShareButton = ({title, slug}) => {
       }
     `
   );
-  const twitterAccount = () => {
-    return site.siteMetadata.author + '_jp'
-  }
-  const url = (slug) => {
-    return site.siteMetadata.siteUrl + slug
-  }
+  const via = site.siteMetadata.author + '_jp'
+  const url = site.siteMetadata.siteUrl + slug
   return (
     <>
       <div className="flex justify-center p-4">
           <p className="font-semibold text-gray-500 text-opacity-100">＼ Share ／</p>
       </div>
       <div className="flex justify-center">
-          <FacebookShareButton url={url(slug)}>
+          <FacebookShareButton url={ url }>
             <FacebookIcon size={64} round />
           </FacebookShareButton>
-          <TwitterShareButton title={title} via={ twitterAccount() } url={url(slug)}>
+          <TwitterShareButton title={ title } via={ via } url={ url }>
             <TwitterIcon size={64} round />
           </TwitterShareButton>
       </div>

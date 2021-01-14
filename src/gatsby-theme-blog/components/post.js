@@ -11,7 +11,7 @@ import PostDate from "./post-date"
 import PostFooter from "./post-footer"
 import PostHero from "./post-hero"
 
-import ShareButton from '../../components/ShareButton'
+import ShareButton from '../../components/post/ShareButton'
 
 const Post = ({
   data: {

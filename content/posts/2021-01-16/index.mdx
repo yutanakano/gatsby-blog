@@ -1,0 +1,41 @@
+---
+title: Gatsby.jsでsitemapを作成する方法
+date: 2021-01-15
+image: ./map_takara_chizu.png
+imageAlt: Gatsby.jsでsitemapを作成する方法
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+このブログもsitemapを作成してGoogleSearchConsoleに登録しようと思います。
+
+今日はsitemapを作成する方法についてメモを残しておきます。
+
+## GGatsby.jsでsitemapを作成する方法
+- sitemapとは
+- 作成方法
+
+### sitemapとは
+
+サイト全体のページ構成を一覧で記載しているページです。
+
+クローラビリティ向上させるために今回は導入します。
+
+### 作成方法
+
+[sitemapの導入](https://github.com/yutanakano/blog/pull/10)のPRが実際にやったことです。
+
+簡単にやったことをまとめると以下です
+
+- `gatsby-plugin-sitemap` を追加し設定ファイルに登録する
+- [GoogleSearchConsole](https://search.google.com/search-console/about)にsitemapを登録する
+
+## さいごに
+
+package追加して設定ファイルに追加するだけで簡単にsitemapが作成されます。
+
+sitemapの確認は当ブログの場合は https://yutanakano.jp/sitemap.xml です。
+
+ドメインのあとに `sitemap.xml` を追加するだけでブラウザ上で簡単に確認できます。

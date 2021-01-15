@@ -20,6 +20,7 @@
     "gatsby-plugin-google-gtag": "^2.6.0",
     "gatsby-plugin-manifest": "^2.8.0",
     "gatsby-plugin-postcss": "^3.4.0",
+    "gatsby-plugin-sitemap": "^2.10.0",
     "gatsby-theme-blog": "^2.0.2",
     "postcss": "^8.2.1",
     "react": "^16.12.0",

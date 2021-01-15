@@ -13,6 +13,7 @@ module.exports = {
       options: {},
     },
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {

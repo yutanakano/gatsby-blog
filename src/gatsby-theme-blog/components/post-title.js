@@ -1,5 +1,5 @@
 import React from "react"
-import Title from "../../components/post/Title";
+import Title from "components/post/Title";
 
 const PostTitle = (props) => {
   return(

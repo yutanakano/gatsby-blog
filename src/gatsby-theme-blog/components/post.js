@@ -2,16 +2,16 @@ import React from "react"
 
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from "@mdx-js/react"
-import PostLayout from "../../components/post/Layout"
+import PostLayout from "components/post/Layout"
 
 import Layout from "./layout"
-import SEO from "../../../node_modules/gatsby-theme-blog/src/components/seo"
+import SEO from "./seo"
 import PostTitle from "./post-title"
 import PostDate from "./post-date"
 import PostFooter from "./post-footer"
 import PostHero from "./post-hero"
 
-import ShareButton from '../../components/ShareButton'
+import ShareButton from 'components/post/ShareButton'
 
 const Post = ({
   data: {

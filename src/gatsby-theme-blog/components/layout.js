@@ -1,6 +1,6 @@
 import React from "react"
 import Header from "./header"
-import useBlogThemeConfig from "./../../../node_modules/gatsby-theme-blog/src/hooks/configOptions"
+import useBlogThemeConfig from "gatsbyThemeBlog/hooks/configOptions"
 import Helmet from "react-helmet"
 import Footer from "./home-footer"
 

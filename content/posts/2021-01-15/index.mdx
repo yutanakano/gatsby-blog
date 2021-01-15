@@ -1,0 +1,36 @@
+---
+title: Gatsby.jsでGoogleAnalytics4に対応する方法
+date: 2021-01-15
+image: ./document_data_bunseki.png
+imageAlt: Gatsby.jsでGoogleAnalytics4に対応する方法
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+このブログにもGAの設定をしようしたのですがGoogleAnalytics4(GA4)に変わっていました。
+
+今日はGA4への対応についてメモを残しておきます。
+
+## Gatsby.jsでGoogleAnalytics4に対応する方法
+- GoogleAnalytics4とは
+- 対応方法
+
+### GoogleAnalytics4について
+- [アナリティクスのスタートガイド](https://support.google.com/analytics/answer/9306384)に基本的な使い方は書いています。
+- [Google アナリティクス4 リリース！ GA4とは？3つのメリットと概要を徹底解説](https://ayudante.jp/column/2020-11-24/11-00/)がわかりやすくまとまってました。
+
+### 対応方法
+
+[gatsby-plugin-google-gtagを追加](https://github.com/yutanakano/blog/pull/8)のPRが実際にやったことです。
+
+簡単にやったことをまとめると以下です
+
+- `gatsby-plugin-google-gtag` を追加し設定ファイルに登録する
+- `gatsby-plugin-google-analytics` はGA4に対応していないので入れ替える形で対応することにしました
+- `GA_TRACKING_ID` を `.env` から取得する
+
+## さいごに
+
+実際に設定してみるとスマホよりもPCで見られることが多いことがわかりました。

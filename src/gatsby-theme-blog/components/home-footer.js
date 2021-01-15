@@ -1,9 +1,7 @@
 import React from "react"
-import Copyright from "../../components/Copyright"
+import Shimoza from "../../components/Shimoza"
 
 const Footer = () => (
-  <footer className='w-full text-center border-t border-grey p-4 pin-b bg-gray-500'>
-    <Copyright />
-  </footer>
+  <Shimoza />
 )
 export default Footer

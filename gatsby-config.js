@@ -3,17 +3,15 @@ require('dotenv').config()
 module.exports = {
   plugins: [
     {
+      resolve: `gatsby-theme-blog`,
+      options: {},
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         icon: `content/assets/icon.png`,
       },
     },
-    {
-      resolve: `gatsby-theme-blog`,
-      options: {},
-    },
-    `gatsby-plugin-postcss`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -23,6 +21,8 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-postcss`,
   ],
   // Customize your site metadata:
   siteMetadata: {

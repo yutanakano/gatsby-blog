@@ -35,7 +35,7 @@ const Post = ({
       }
       imageAlt={post.imageAlt}
     />
-    <main className='container mx-auto flex-grow p-4'>
+    <main className='container mx-auto flex-grow p-4 md:px-72'>
       <article>
         <header>
           <PostHero post={post} />

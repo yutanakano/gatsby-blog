@@ -20,7 +20,7 @@ export const query = graphql`
         excerpt
         slug
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY/MM/DD")
         tags
       }
     }

@@ -26,7 +26,7 @@ export const query = graphql`
       slug
       title
       tags
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "YYYY/MM/DD")
       image {
         childImageSharp {
           fluid(maxWidth: $maxWidth) {
@@ -50,14 +50,14 @@ export const query = graphql`
       excerpt
       slug
       title
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "YYYY/MM/DD")
     }
     next: blogPost(id: { eq: $nextId }) {
       id
       excerpt
       slug
       title
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "YYYY/MM/DD")
     }
   }
 `

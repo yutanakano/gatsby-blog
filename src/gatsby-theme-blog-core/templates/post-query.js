@@ -1,5 +1,5 @@
 import { graphql } from "gatsby"
-import PostPage from "../../../node_modules/gatsby-theme-blog/src/gatsby-theme-blog-core/components/post"
+import PostPage from "gatsbyThemeBlog/gatsby-theme-blog-core/components/post"
 
 export default PostPage
 

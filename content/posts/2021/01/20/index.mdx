@@ -1,0 +1,91 @@
+---
+title: gatsby-theme-blogのQueryを変更する方法
+date: 2021-01-20
+image: ./music_ihou_download.png
+imageAlt: gatsby-theme-blogのQueryを変更する方法
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+gatsby-theme-blogのクエリを変更したいと思いハマったのでメモを残しておきます。
+
+## gatsby-theme-blogのQueryを変更する方法
+- やりたいこと
+- これじゃない感
+- やったこと
+
+### やりたいこと
+
+日付のフォーマットを `YYYY/MM/DD` に変更したかっただけです。
+
+### これじゃない感
+
+ググっても出て来る方法は `gatsby-node.js` にクエリを書く方法ばかり。
+
+ちがう。そうじゃない。Teemaを使ってそれはさすがにセンスないのでは？と悶々としていました。
+
+
+### やったこと
+
+#### シャドーイングする
+
+- 以下2つのクエリが書いてあるコアのファイルをシャドーイングする
+
+```
+src/gatsby-theme-blog-core/templates/post-query.js
+src/gatsby-theme-blog-core/templates/posts-query.js
+```
+
+- シャドーイングするとディレクトリ構造は以下のようになる
+
+```
+一部抜粋
+├── gatsby-plugin-theme-ui
+│   └── index.js
+├── gatsby-theme-blog
+│   └── components
+│       ├── bio-content.js
+│       ├── bio.js
+│       ├── header.js
+│       ├── home-footer.js
+│       ├── layout.js
+│       ├── post-date.js
+│       ├── post-footer.js
+│       ├── post-hero.js
+│       ├── post-link.js
+│       ├── post-list.js
+│       ├── post-title.js
+│       ├── post.js
+│       ├── posts.js
+│       └── seo.js
+├── gatsby-theme-blog-core(new)
+│   └── templates(new)
+│       ├── post-query.js(new)
+│       └── posts-query.js(new)
+```
+
+#### シャドーイングしたファイルのクエリ名を変更
+
+- 同じクエリ名だと怒られるのでそれぞれのクエリに `Custom` の `Prefix` をつけて回避
+
+```
+query CustomPostPageQuery
+query CustomPostsPageQuery
+```
+
+#### import先を変更する
+
+- 最後にimportするファイルを以下の2つに指定する
+
+```
+node_modules/gatsby-theme-blog/src/gatsby-theme-blog-core/components/post
+node_modules/gatsby-theme-blog/src/gatsby-theme-blog-core/components/posts
+```
+
+- 実際に対応したPR [Queryを上書きできる](https://github.com/yutanakano/blog/pull/13/commits/94a6b8591861b053ddefb04ee4c62455ae1edfcf)
+  - importのパスは [alias](https://github.com/yutanakano/blog/blob/master/gatsby-node.js#L8-L9) を使っているので注意
+
+## さいごに
+`gatsby-theme-blog-core` のクエリファイルをシャドーイングして `gatsby-theme-blog` の内部でシャドーイングしている `gatsby-theme-blog-core` のcomponentをimportする必要があったのがハマリポイントでした。

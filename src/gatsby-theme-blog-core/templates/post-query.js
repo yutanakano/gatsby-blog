@@ -13,6 +13,8 @@ export const query = graphql`
     site {
       siteMetadata {
         title
+        author
+        siteUrl
         social {
           name
           url

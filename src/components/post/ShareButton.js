@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 
 import {
   FacebookShareButton,
@@ -8,21 +7,9 @@ import {
   TwitterIcon
 } from 'react-share';
 
-const ShareButton = ({title, slug}) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            author
-            siteUrl
-          }
-        }
-      }
-    `
-  );
-  const via = site.siteMetadata.author + '_jp'
-  const url = site.siteMetadata.siteUrl + slug
+const ShareButton = ({author, siteUrl, slug, title}) => {
+  const via = author + '_jp'
+  const url = siteUrl + slug
   return (
     <>
       <div className="flex justify-center p-4">

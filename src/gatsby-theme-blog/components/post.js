@@ -17,7 +17,7 @@ const Post = ({
   data: {
     post,
     site: {
-      siteMetadata: { title },
+      siteMetadata: { author, siteUrl, title },
     },
   },
   location,
@@ -48,7 +48,7 @@ const Post = ({
           </MDXProvider>
         </section>
       </article>
-      <ShareButton title={post.title} slug={post.slug}/>
+      <ShareButton author={author} siteUrl={siteUrl} slug={post.slug} title={post.title} />
       <PostFooter {...{ previous, next }} />
     </main>
   </Layout>

@@ -11,3 +11,29 @@ exports.onCreateWebpackConfig = ({
     },
   })
 }
+
+// CategoryPage作成
+const path = require("path");
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+
+  return graphql(`
+    {
+      allMdx(limit: 2000) {
+        group(field: frontmatter___category) {
+          fieldValue
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allMdx.group.map(category => {
+      createPage({
+        path: `categories/${category.fieldValue}`,
+        component: path.resolve("./src/templates/Category.js"),
+        context: {
+          category: category.fieldValue
+        }
+      });
+    });
+  });
+};

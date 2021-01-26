@@ -1,0 +1,41 @@
+---
+title: Gatsby.jsにカテゴリ機能を実装する中でハマった話
+date: 2021-01-28
+image: ./book_zukan_flower.png
+imageAlt: Gatsby.jsにカテゴリ機能を実装する中でハマった話
+category: Gatsby.js
+tag: ['Gatsby.js', 'GraphiQL', 'React', 'Query', 'gatsby-theme-blog', 'tag', 'category']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsでカテゴリ機能を作ったのですがハマったのでメモを残しておきます。
+
+## Gatsby.jsにカテゴリ機能を実装する中でハマった話
+
+`frontmatter` からデータを取得する場合は事前に `frontmatter` にkey(ここでいう `category` と `tag` です)を登録しておく必要があります。
+
+以下の `+` が登録したkeyです
+
+```
+---
+title: example
+date: 0000-00-00
+image: ./image.png
+imageAlt: example
++ category: example
++ tag: ['example-tag', 'example-post', 'example-category']
+---
+```
+
+一度追加したら認識させるために `yarn run dev` を再実行する必要があります。
+
+上記の対応を行うことでQueryを実行すると `category` と `tag` の値を取得できるようになります。
+
+
+## さいごに
+登録していなくてハマったり、再起動をしていなくてハマったりしました。
+
+初見殺しされました。

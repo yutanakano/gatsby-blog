@@ -1,0 +1,41 @@
+---
+title: Gatsby.jsに404ページを実装する
+date: 2021-01-18
+image: ./thumbnail_internet_404.jpg
+imageAlt: Gatsby.jsに404ページを実装する
+category: Gatsby.js
+tag: ['Gatsby.js', '404', 'error', 'React', 'pages', 'gatsby-theme-blog']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsで404ページを作成したのでメモを残しておきます。
+
+## Gatsby.jsに404ページを実装する
+
+- `src/pages/404.js` を作成する
+- 以下は実際に作ってみた404ページです
+
+```
+import React from "react"
+
+import Layout from "../gatsby-theme-blog/components/layout"
+import SEO from "../../node_modules/gatsby-theme-blog/src/components/seo"
+
+const NotFoundPage = () => (
+  <Layout>
+    <SEO title="404: Not found" />
+    <main className='container mx-auto flex-grow'>
+      <h1>NOT FOUND</h1>
+      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    </main>
+  </Layout>
+)
+
+export default NotFoundPage
+```
+
+## さいごに
+404ページは簡単に作れるのでまた作ってない方はぜひ

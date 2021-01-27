@@ -1,0 +1,49 @@
+---
+title: Gatsby.jsでfaviconを設定する方法
+date: 2021-01-13
+image: ./denkyuu_eco.png
+imageAlt: Gatsby.jsでfaviconを設定する方法
+category: Gatsby.js
+tag: ['Gatsby.js', 'favicon', 'React', 'gatsby-plugin-manifest', 'gatsby-theme-blog', 'plugin']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsでfaviconを適用させる方法についてメモを残しておきます。
+
+## Gatsby.jsでfaviconを設定する方法
+- pluginのインストール
+- gatsby-configに設定を追加
+- 画像の配置
+
+### pluginのインストール
+
+- `gatsby-plugin-manifest` を インストールする
+
+```
+npm install --save gatsby-plugin-manifest
+```
+
+### gatsby-configに設定を追加
+
+- `plugins` の中に以下を追加する(faviconを配置するディレクトリのパスを明示的に記載する)
+
+```
+plugins: [
++    {
++      resolve: `gatsby-plugin-manifest`,
++      options: {
++        icon: `content/assets/faviconまでのpath`,
++      },
++    },
+]
+```
+
+### 画像の配置
+
+今回は `content/assets/` 配下に設置するようにしました
+
+## さいごに
+faviconの設定も簡単にできますが最近はpluginとの棲み分けに悩んでいます

@@ -1,0 +1,86 @@
+---
+title: Gatsby.jsにShareButtonを実装する
+date: 2021-01-17
+image: ./sns_happy_woman.png
+imageAlt: Gatsby.jsにShareButtonを実装する
+category: Gatsby.js
+tag: ['Gatsby.js', 'SNS', 'Component', 'React', 'gatsby-plugin-manifest', 'gatsby-theme-blog', 'plugin']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsでShareButtonComponentを作成したのでメモを残しておきます。
+
+## Gatsby.jsにShareButtonを実装する
+- パッケージのインストール
+- Componentの作成
+- 使い方
+
+### パッケージのインストール 
+
+```
+npm install react-share react-icons --save
+```
+
+### Componentの作成
+
+- `author` と `siteUrl` を 外から渡す必要がある
+  - 今回は `gatsby-theme-blog-core/post-query.js` をシャドーイングして対応している
+  - Queryの編集方法については[こちら](https://yutanakano.jp/2021/01/20/)に書いています
+
+```
+import React from 'react';
+
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon
+} from 'react-share';
+
+const ShareButton = ({author, siteUrl, slug, title}) => {
+  const via = author + '_jp'
+  const url = siteUrl + slug
+  const size = 64
+  return (
+    <>
+      <div>
+          <FacebookShareButton url={ url }>
+            <FacebookIcon size={ size } round />
+          </FacebookShareButton>
+          <TwitterShareButton title={ title } via={ via } url={ url }>
+            <TwitterIcon size={ size } round />
+          </TwitterShareButton>
+      </div>
+    </>
+  );
+};
+
+export default ShareButton;
+```
+
+### 使い方
+
+- 実際に `post.js` ではQueryを変更し `author` と `siteUrl` を取得してComponentにわたすようにしています
+
+```
+import ShareButton from 'ShareButtonのパス'
+
+const Post = ({
+  data: {
+    post,
+    site: {
+      siteMetadata: { author, siteUrl },
+    },
+  },
+}) => (
+    <ShareButton author={ author } siteUrl={ siteUrl } slug={ post.slug } title={ post.title } />
+)
+
+export default Post
+```
+
+## さいごに
+他にもいくつかシェアボタン作る方法はあるみたいです

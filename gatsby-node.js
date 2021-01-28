@@ -1,4 +1,7 @@
-const resolve = require("path").resolve
+const path = require("path");
+
+// pathのalias
+const resolve = path.resolve
 exports.onCreateWebpackConfig = ({
   actions,
 }) => {
@@ -13,10 +16,8 @@ exports.onCreateWebpackConfig = ({
 }
 
 // CategoryPage作成
-const path = require("path");
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-
   return graphql(`
     {
       allMdx(limit: 2000) {
@@ -32,6 +33,30 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve("./src/templates/Category.js"),
         context: {
           category: category.fieldValue
+        }
+      });
+    });
+  });
+};
+
+// TagPage作成
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+  return graphql(`
+    {
+      allMdx(limit: 2000) {
+        group(field: frontmatter___tag) {
+          fieldValue
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allMdx.group.map(tag => {
+      createPage({
+        path: `tags/${tag.fieldValue}`,
+        component: path.resolve("./src/templates/Tag.js"),
+        context: {
+          tag: tag.fieldValue
         }
       });
     });

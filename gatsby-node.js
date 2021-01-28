@@ -37,3 +37,28 @@ exports.createPages = ({ actions, graphql }) => {
     });
   });
 };
+
+// TagPage作成
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
+
+  return graphql(`
+    {
+      allMdx(limit: 2000) {
+        group(field: frontmatter___tag) {
+          fieldValue
+        }
+      }
+    }
+  `).then(result => {
+    result.data.allMdx.group.map(tag => {
+      createPage({
+        path: `tags/${tag.fieldValue}`,
+        component: path.resolve("./src/templates/Tag.js"),
+        context: {
+          tag: tag.fieldValue
+        }
+      });
+    });
+  });
+};

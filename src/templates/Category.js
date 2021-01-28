@@ -18,7 +18,7 @@ const Category = ({ location, pageContext, data }) => {
           edges.map((edge) => {
             return(
               <div key={`${edge.node.frontmatter.id}`}>
-                <Link to={createLinkPath(edge.node.slug)}>
+                <Link to={`/${edge.node.slug}`}>
                   {edge.node.frontmatter.title}
                 </Link>
               </div>
@@ -29,10 +29,6 @@ const Category = ({ location, pageContext, data }) => {
     </Layout>
   );
 };
-
-const createLinkPath = (slug) => {
-    return '/'+slug;
-}
 
 export const query = graphql`
 query ($category: [String]) {

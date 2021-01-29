@@ -33,7 +33,7 @@ const Tag = ({ location, pageContext, data }) => {
 export const query = graphql`
 query ($tag: [String]) {
     allMdx(
-      filter: { frontmatter: { tag: { in: $tag } } },
+      filter: { frontmatter: { tags: { in: $tag } } },
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
@@ -44,7 +44,7 @@ query ($tag: [String]) {
             title
             category
             date(formatString: "YYYY/MM/DD")
-            tag
+            tags
           }
         }
       }

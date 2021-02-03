@@ -1,0 +1,144 @@
+---
+title: Gatsby.jsに関連記事機能を実装する中でハマった話
+date: 2021-02-04
+image: ./doppelganger.png
+imageAlt: Gatsby.jsに関連記事機能を実装する中でハマった話
+category: Gatsby.js
+tags: ['Gatsby.js', 'GraphiQL', 'React', 'Query', 'gatsby-theme-blog', 'tags', 'category', 'frontmatter', 'staticQuery', 'gatsby-node.js', 'createPages']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsで関連記事機能を作ったのですがハマったのでメモを残しておきます。
+
+## Gatsby.jsに関連記事機能を実装する中でハマった話
+- 関連記事機能とは
+- ボツ案
+- 実際の実装
+- 今回のハマりポイントと反省
+
+### 関連記事機能とは
+簡単に言えばベースとなる記事についたtagがついている記事を集めてきてリンクを作って表示する機能です。
+
+### ボツ案
+StaticQueryの中に今の記事に紐づく `tags` を渡して該当のtagを含む記事一覧を取得するQueryを書きました。
+
+しかし、Staticということもあり、外部からパラメータを渡すことができなかったのでこちらの案はボツになりました。
+
+これができるのであればQuery書いてmapするだけで実装は終了でした。
+
+以下がイメージしていたQueryです
+
+```
+query RelatedArticles($tags: [String!]) {
+  allMdx(filter: {frontmatter: {tags: {in: $tags}}}, sort: {order: DESC, fields: [frontmatter___date]}) {
+    edges {
+      node {
+        id
+        slug
+        frontmatter {
+          tags
+          category
+          title
+        }
+      }
+    }
+  }
+}
+```
+
+- 将来的には外から値を渡せるようになってほしいと思いつつ以下のissueを見てました。
+  - [[feat]: add ability to pass variables to StaticQuery](https://github.com/gatsbyjs/gatsby/discussions/10482)
+
+### 実際の実装
+一旦全ての記事を取得するQueryを実行し、今の記事に紐づく `tags` を条件にfilterしていきます。
+
+実際に書いたコードは以下です
+
+```
+import React from "react"
+import { Link, useStaticQuery, graphql } from "gatsby"
+
+const RelatedArticle = ({ post }) => {
+  const { allMdx } = useStaticQuery(
+    graphql`
+      query{
+        allMdx {
+          nodes {
+            id
+            slug
+            frontmatter {
+              category
+              tags
+              title
+            }
+          }
+        }
+      }
+    `
+  );
+  return (
+    <nav>
+      <h1>関連記事</h1>
+      <ul>
+        {
+          allMdx.nodes.map(node => {
+            const relatedArticle = getTagWithArticle(node, post)
+            if (relatedArticle.length) {
+              return(createLink(relatedArticle))
+            }
+          })
+        }
+      </ul>
+    </nav>
+  );
+};
+
+function getTagWithArticle(node, post) {
+  const relatedArticle = [];
+  for(let i = 0; i < post.tags.length; i++) {
+    // 一致するタグを含んでいる && relatedArticleが空 && 同じ記事ではない
+    if (node.frontmatter.tags?.includes(post.tags[i]) && !relatedArticle.length && !(createPath(node.slug) === post.slug)) {
+      relatedArticle.push(node)
+    }
+  }
+  return(relatedArticle)
+}
+
+function createPath(slug) {
+  return(`/${ slug }`)
+}
+
+function createLink(relatedArticle) {
+  return(
+    relatedArticle.map(node=>{
+      return(
+        <li key={ node.id }>
+          <Link to={ createPath(node.slug) }>
+            { node.frontmatter.title }
+          </Link>
+        </li>
+      )
+    })
+  )
+}
+export default RelatedArticle
+```
+
+### 今回のハマりポイントと反省
+- `gatsby-theme-blog` のQueryでデフォルトで登録されてた `frontmatter` の `key` は `tag` ではなく `tags` でした。
+  - 過去のコードから記事まで全部renameしました。コアのものこそ先に確認するべきでした。
+- `staticQuery` は考えてみれば当然ですが、可変な挙動ができない。
+  - 「名は体を表す」というのに全然気づかずに実装してました。
+- `gatsby-node.js` 内の `createPages` で、returnに複数のページ作成のQueryを渡すことができる。
+  - ページ作成ごとにreturnしていると最後にreturnしたものしか表示されてないことに気づき修正しました。
+  - こちらも「名は体を表す」というのに全然気づかずに実装してました。
+
+## さいごに
+今までの機能はQuery書いてmapするだけだったのでjsを書くという実感はなくQueryを書くだけでした。
+
+今回は取得してきたデータを加工することを書く必要があったのでコード書いてる感がありました。
+
+おかげで今まで以上にjsと仲良くなれた気がします。

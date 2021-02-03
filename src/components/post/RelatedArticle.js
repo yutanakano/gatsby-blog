@@ -25,7 +25,7 @@ const RelatedArticle = ({ post }) => {
       <ul>
         {
           allMdx.nodes.map(node => {
-            const relatedArticle = hasTagWithArticle(node, post)
+            const relatedArticle = getTagWithArticle(node, post)
             if (relatedArticle.length) {
               return(createLink(relatedArticle))
             }
@@ -36,10 +36,10 @@ const RelatedArticle = ({ post }) => {
   );
 };
 
-function hasTagWithArticle(node, post) {
+function getTagWithArticle(node, post) {
   const relatedArticle = [];
   for(let i = 0; i < post.tags.length; i++) {
-    // 一致するタグを含んでいる && relatedArticleが空 && 同じ記事を除外する
+    // 一致するタグを含んでいる && relatedArticleが空 && 同じ記事ではない
     if (node.frontmatter.tags?.includes(post.tags[i]) && !relatedArticle.length && !(createPath(node.slug) === post.slug)) {
       relatedArticle.push(node)
     }

@@ -44,7 +44,7 @@ query ($category: [String]) {
             title
             category
             date(formatString: "YYYY/MM/DD")
-            tag
+            tags
           }
         }
       }

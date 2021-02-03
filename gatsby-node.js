@@ -15,50 +15,49 @@ exports.onCreateWebpackConfig = ({
   })
 }
 
-// CategoryPage作成
+// 各種ページの作成
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
-  return graphql(`
-    {
-      allMdx(limit: 2000) {
-        group(field: frontmatter___category) {
-          fieldValue
+  return (
+    // CategoryPage作成
+    graphql(`
+      {
+        allMdx(limit: 2000) {
+          group(field: frontmatter___category) {
+            fieldValue
+          }
         }
       }
-    }
-  `).then(result => {
-    result.data.allMdx.group.map(category => {
-      createPage({
-        path: `categories/${category.fieldValue}`,
-        component: path.resolve("./src/templates/Category.js"),
-        context: {
-          category: category.fieldValue
-        }
+    `).then(result => {
+      result.data.allMdx.group.map(category => {
+        createPage({
+          path: `categories/${category.fieldValue}`,
+          component: path.resolve("./src/templates/Category.js"),
+          context: {
+            category: category.fieldValue
+          }
+        });
       });
-    });
-  });
-};
-
-// TagPage作成
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
-  return graphql(`
-    {
-      allMdx(limit: 2000) {
-        group(field: frontmatter___tag) {
-          fieldValue
+    }),
+    // TagPage作成
+    graphql(`
+      {
+        allMdx(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
         }
       }
-    }
-  `).then(result => {
-    result.data.allMdx.group.map(tag => {
-      createPage({
-        path: `tags/${tag.fieldValue}`,
-        component: path.resolve("./src/templates/Tag.js"),
-        context: {
-          tag: tag.fieldValue
-        }
+    `).then(result => {
+      result.data.allMdx.group.map(tag => {
+        createPage({
+          path: `tags/${tag.fieldValue}`,
+          component: path.resolve("./src/templates/Tag.js"),
+          context: {
+            tags: tag.fieldValue
+          }
+        });
       });
-    });
-  });
+    })
+  );
 };

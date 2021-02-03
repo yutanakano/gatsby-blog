@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-const RelatedArticle = ({ post }) => {
+const RelatedArticleList = ({ post }) => {
   const { allMdx } = useStaticQuery(
     graphql`
       query{
@@ -25,9 +25,9 @@ const RelatedArticle = ({ post }) => {
       <ul>
         {
           allMdx.nodes.map(node => {
-            const relatedArticle = getTagWithArticle(node, post)
+            const relatedArticle = filter(node, post)
             if (relatedArticle.length) {
-              return(createLink(relatedArticle))
+              return(getLink(relatedArticle))
             }
           })
         }
@@ -36,27 +36,23 @@ const RelatedArticle = ({ post }) => {
   );
 };
 
-function getTagWithArticle(node, post) {
+function filter(node, post) {
   const relatedArticle = [];
   for(let i = 0; i < post.tags.length; i++) {
     // 一致するタグを含んでいる && relatedArticleが空 && 同じ記事ではない
-    if (node.frontmatter.tags?.includes(post.tags[i]) && !relatedArticle.length && !(createPath(node.slug) === post.slug)) {
+    if (node.frontmatter.tags?.includes(post.tags[i]) && !relatedArticle.length && !(`/${ node.slug }` === post.slug)) {
       relatedArticle.push(node)
     }
   }
   return(relatedArticle)
 }
 
-function createPath(slug) {
-  return(`/${ slug }`)
-}
-
-function createLink(relatedArticle) {
+function getLink(relatedArticle) {
   return(
     relatedArticle.map(node=>{
       return(
         <li key={ node.id }>
-          <Link to={ createPath(node.slug) }>
+          <Link to={ `/${ node.slug }` }>
             { node.frontmatter.title }
           </Link>
         </li>
@@ -64,4 +60,4 @@ function createLink(relatedArticle) {
     })
   )
 }
-export default RelatedArticle
+export default RelatedArticleList

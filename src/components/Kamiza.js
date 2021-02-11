@@ -22,7 +22,7 @@ const Kamiza = () => {
               type="button"
               onClick={() => setNavbarOpen(!navbarOpen)}
             >
-              <FontAwesomeIcon color="#333" size="2m" icon={faBars} />
+              <FontAwesomeIcon color="#333" size="2x" icon={faBars} />
             </button>
           </div>
           <div

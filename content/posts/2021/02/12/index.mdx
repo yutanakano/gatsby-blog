@@ -1,0 +1,81 @@
+---
+title: Gatsby.jsにもっと見るボタンを作った話
+date: 2021-02-12
+image: ./pose_button_osu.png
+imageAlt: Gatsby.jsにもっと見るボタンを作った話
+category: Gatsby.js
+tags: ['Gatsby.js', 'React', 'gatsby-theme-blog', 'hooks', 'Vue']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+Gatsby.jsでもっと見るボタンを作ったのでメモを残しておきます。
+
+## Gatsby.jsにもっと見るボタンを作った話
+- もっと見るボタンとは
+- 実際の実装
+
+### もっと見るボタンとは
+簡単に言えば、記事一覧の表示件数を増やしたい場合は、ボタンをClickすることで表示件数が数件ずつ増えていく機能です。
+
+### 実際の実装
+
+#### もっと見るボタンのcomponentを作成
+
+- 引数の説明
+  - `display` 全ての記事を表示した場合はもっと見るボタンを表示しないようにする
+  - `chunk` いくつずつ増やしていくのか
+  - `scope` いくつ記事を表示するのか
+  - `setScope` 表示する記事数を更新する
+
+```
+import React from "react"
+
+const ShowMoreButton = ({ display, chunk, scope, setScope }) => {
+  return(
+    <>
+      <div style={{ display: display ? '' : 'none' }}>
+        <button onClick={ () => setScope(scope+chunk) }>
+          { "show more" }
+        </button>
+      </div>
+    </>
+  )
+}
+
+export default ShowMoreButton
+```
+
+#### 記事一覧componentを作成
+
+- 簡単な解説
+  - 記事一覧取得は `gatsby-theme-blog` のcomponentを利用
+  - `useState()` を利用してClickした回数のステータスを管理
+  - `posts.slice(0, scope)` でscopeの分だけ記事を表示する
+  - `posts.length > scope` 記事一覧よりもscopeが大きくなったら非表示にするための条件
+
+
+```
+import React from "react"
+import OriginalPostList from "gatsby-theme-blog/src/components/post-list"
+import ShowMoreButton from "components/ShowMoreButton"
+
+const PostList = ({ posts }) => {
+  const [scope, setScope] = React.useState(10);
+  const chunk = 5  
+  return(
+    <>
+      <OriginalPostList posts = { posts.slice(0, scope) } />
+      <ShowMoreButton display={ posts.length > scope } setScope={ setScope } scope={ scope } chunk={ chunk } />
+    </>
+  )
+}
+
+export default PostList
+```
+
+## さいごに
+
+今後もブログの機能を作っていく中で `hooks` 活用していきたいと思いました

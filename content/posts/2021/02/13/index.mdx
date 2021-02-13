@@ -1,0 +1,77 @@
+---
+title: React NativeとFlutterを聴いたので気になったところをまとめた
+date: 2021-02-13
+image: ./space_grand_cross.png
+imageAlt: React NativeとFlutterを聴いたので気になったところをまとめた
+category: クロスプラットフォーム
+tags: ['React', 'React Native', 'Flutter', 'iOS', 'Android', 'RN', 'Expo', 'react-native link', 'react-native upgrade', 'React Navigation', 'Typescript', 'Canvas']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+React Native に関する話を聴いてみて個人的にメモっておきたいと思った内容をまとめます。
+スピーカーはReactNativeの方なのでFlutterの情報量は少なめです。
+
+内容に関しては下記から聞くことができます。
+
+- [【前編】React NativeとFlutter、最近のRNでのアプリ開発体験](https://stand.fm/episodes/60215b798ba7e140b11fdbb6)
+- [【後編】React NativeとFlutter、RNの採用戦略](https://stand.fm/episodes/60215c488ba7e11b0a1fdbca)
+
+## React NativeとFlutterを聴いたので気になったところをまとめた
+
+### ユーザの違い
+- RNを使う人はweb出身者が多い
+- Flutterを使う人は、元々iOSやAndroidを書いてる人が多い
+
+### Upgradeで困る原因と困らない理由
+- RNを使うweb出身者はNativeのビルドの前提知識がないので対処がわからずに困る人が多い
+- Flutterを使う人達はNativeの知識がある状態でスタートするので困らない
+
+### RNのUpgradeの辛さが減った理由
+
+- `react-native link` が改善された
+- `react-native upgrade` がちゃんと動くようになった
+
+### Expoはいいぞ
+- Expoは関連するものも全部Upgradしてくれるので困らない
+- Expo の reject が辛かったのは Expo kit の時代
+- 今はめっちゃ快適に動くできることがかなり広がった
+
+### 選択肢の差
+#### ReactNative
+- 無限の選択肢が存在する
+- Expoを使うかどうかの質問が多い
+- 選択肢が自由な分みんな悩んでる
+- ナビゲーションはとりあえず `React Navigation` を一択
+- RNというよりjs(ts)資産が多く選択が増えて悩みが増える
+
+#### Flutter
+- 初回の選択肢が少ない
+- 使うものはだいたい決まっている
+
+### それぞれのforWebについて
+#### ReactNative
+- だけでwebサイトを作れるけどRNで作ったComponentを使い回せる
+- 一部だけアプリの機能をきりだせるようにしたい場合は便利
+
+#### Flutter
+- 出力が少し特殊(Canvasによって作られる)
+
+### Flutterが流行った理由
+- Flutterのエンジニアの方と話したい(詳細は不明)
+
+### 採用戦略
+- React書いてる人であればReactNativeの開発も可能
+
+### これからReactNativeをはじめるなら
+- Expo + Typescript
+
+## さいごに
+
+今のRNを知るにはちょうどよかったです。
+
+RNに元々組み込まれてて切り出されたライブラリたちのまとめとかあれば欲しいなと思いました。
+
+今後はFlutterのエンジニアの方とRNのエンジニアの方の対話とかも聴いてみたいです。

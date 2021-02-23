@@ -30,5 +30,8 @@
     "react-share": "^4.3.1",
     "tailwindcss": "^2.0.3",
     "theme-ui": "0.4.0-rc.5"
+  },
+  "devDependencies": {
+    "ts-node": "^9.1.1"
   }
 }

@@ -23,6 +23,7 @@ module.exports = {
     },
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-typegen`,
   ],
   // Customize your site metadata:
   siteMetadata: {

@@ -1,6 +1,13 @@
 import React from "react"
 
-const ShowMoreButton = ({ display, chunk, scope, setScope }) => {
+type Props = Required<{
+  display: boolean
+  chunk: number
+  scope: number
+  setScope: (scope: number) => number
+}>
+
+const ShowMoreButton: React.FC<Props> = ({ display, chunk, scope, setScope }) => {
   return(
     <>
       <div className="flex justify-center p-4" style={{ display: display ? '' : 'none' }}>

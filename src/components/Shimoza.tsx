@@ -5,7 +5,7 @@ const Copyright = () => {
     <footer className='w-full p-4 bg-gray-500 text-center'>
       © {new Date().getFullYear()}, 
       {` `}
-      <span href="https://yutanakano.jp/">yutanakano</span>
+      <a href="https://yutanakano.jp/">yutanakano</a>
     </footer>
   );
 }

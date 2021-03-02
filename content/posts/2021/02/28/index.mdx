@@ -1,0 +1,71 @@
+---
+title: Gatsby.jsをTypescript化した
+date: 2021-02-28
+image: ./gatsby-ts.png
+imageAlt: Gatsby.jsをTypescript化した
+category: Gatsby.js
+tags: ['React', 'Gatsby.js', 'Typescript', 'MDX']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+ノリと勢いで運用中のブログをTypescript化したので忘備録として何をやったのかメモを残しておきます。
+
+## Gatsby.jsをTypescript化した
+- gatsby-plugin-typescript
+- tsconfig.jsonを作成
+- gatsby-plugin-typegenの追加
+- gatsby-plugin-typegenの設定
+- gatsby-node.jsのTypeScript化
+
+### gatsby-plugin-typescriptについて
+
+>gatsby-plugin-typescriptの追加から入る記事が多いのですが、2020 年 10 月現在、Gatsby にはgatsby-plugin-typescriptがすでに組み込まれているので、何もせずで大丈夫です。
+
+- [Gatsby.jsのTypescript化 2020](https://zenn.dev/ryo_kawamata/articles/gatsby-ts-2020)から一部抜粋
+
+### tsconfig.jsonを作成
+
+- コマンドで設定ファイルを作成(設定はよしなに)
+
+```
+npx tsc --init
+```
+
+### gatsby-plugin-typegenについて
+
+>Gatsby はリソースに対して GraphQL でリクエストを送り、データを取得します。
+その GraphQL リクエストのレスポンスの型を、gatsby-plugin-typegenを使い生成します。
+
+- [Gatsby.jsのTypescript化 2020](https://zenn.dev/ryo_kawamata/articles/gatsby-ts-2020)から一部抜粋
+
+### gatsby-plugin-typegenの追加
+
+- pluginをインストール
+
+```
+npm install gatsby-plugin-typegen
+```
+
+### gatsby-plugin-typegenの設定
+
+- pluginの組み込み
+
+```gatsby-config.js
+plugins: [
+    // ...
+    `gatsby-plugin-typegen`
+],
+```
+
+### gatsby-node.jsのTypeScript化
+
+- 未対応のため今後対応する
+
+## さいごに
+
+Typescriptを使うのに難しい設定などは特になく、簡単にTypeScript化することができました。
+
+今後はTSとも仲良くなっていこうと思います。

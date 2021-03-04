@@ -1,0 +1,160 @@
+---
+title: NxpoとExpoとNextをディレクトリ構造を比較
+date: 2021-03-04
+image: ./nxpo.png
+imageAlt: Gatsby.jsをTypescript化した
+category: Expo
+tags: ['React', 'Expo', 'Typescript', 'Next.js', 'Nxpo']
+---
+
+## はじめに
+
+中野区在住の中野です。
+
+はやい話がExpoのforWebでも `Next.js` が使えるようになったらしいです。
+
+名前めんどくさいので `Nxpo` って呼ぶことにしました。
+
+今回はExpoとNext.jsとNxpoのディレクトリ構造をそれぞれメモしています。
+
+## NxpoとExpoとNextをディレクトリ構造を比較
+- 各プロジェクトの構築
+- 各プロジェクトの構造を比較
+
+### 各プロジェクトの構築
+- expo
+
+```jsx
+npx expo-cli init プロジェクト名(expo)
+```
+
+- next
+
+```jsx
+npx create-next-app --example with-typescript プロジェクト名(next)
+```
+
+- nxpo
+
+```jsx
+npx create-react-native-app -t with-nextjs プロジェクト名(nxpo)
+```
+### 各プロジェクトの構造を比較
+
+- expo(ts)
+
+```jsx
+.
+├── App.tsx
+├── app.json
+├── assets
+│   ├── fonts
+│   └── images
+├── babel.config.js
+├── components
+│   ├── EditScreenInfo.tsx
+│   ├── StyledText.tsx
+│   ├── Themed.tsx
+│   └── __tests__
+├── constants
+│   ├── Colors.ts
+│   └── Layout.ts
+├── hooks
+│   ├── useCachedResources.ts
+│   ├── useColorScheme.ts
+│   └── useColorScheme.web.ts
+├── navigation
+│   ├── BottomTabNavigator.tsx
+│   ├── LinkingConfiguration.ts
+│   └── index.tsx
+├── package.json
+├── screens
+│   ├── NotFoundScreen.tsx
+│   ├── TabOneScreen.tsx
+│   └── TabTwoScreen.tsx
+├── tsconfig.json
+├── types.tsx
+└── yarn.lock
+```
+
+- next(ts)
+
+```jsx
+.
+├── README.md
+├── components
+│   ├── Layout.tsx
+│   ├── List.tsx
+│   ├── ListDetail.tsx
+│   └── ListItem.tsx
+├── interfaces
+│   └── index.ts
+├── next-env.d.ts
+├── package.json
+├── pages
+│   ├── about.tsx
+│   ├── api
+│   ├── index.tsx
+│   └── users
+├── tsconfig.json
+├── utils
+│   └── sample-data.ts
+└── yarn.lock
+```
+
+- nxpo(ts)
+
+```jsx
+.
+├── App.tsx
+├── app.json
+├── assets
+│   ├── fonts
+│   └── images
+├── babel.config.js
+├── components
+│   ├── EditScreenInfo.tsx
+│   ├── StyledText.tsx
+│   ├── Themed.tsx
+│   └── __tests__
+├── constants
+│   ├── Colors.ts
+│   └── Layout.ts
+├── hooks
+│   ├── useCachedResources.ts
+│   ├── useColorScheme.ts
+│   └── useColorScheme.web.ts
+├── navigation
+│   ├── BottomTabNavigator.tsx
+│   ├── LinkingConfiguration.ts
+│   └── index.tsx
+├── package.json
+├── screens
+│   ├── NotFoundScreen.tsx
+│   ├── TabOneScreen.tsx
+│   └── TabTwoScreen.tsx
+├── tsconfig.json
+├── types.tsx
+└── yarn.lock.
+├── App.tsx
+├── README.md
+├── babel.config.js
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── _document.tsx
+│   └── index.tsx
+└── yarn.lock
+```
+
+## さいごに
+
+アプリ作ったあとにリソースを活用してwebのほうも一緒にやっちゃう？
+
+と言う事を考えており、Nxpoに関する記事( [Using Next.js with Expo for Web](https://docs.expo.io/guides/using-nextjs/) )を見つけたので、
+
+それぞれのプロジェクトのディレクトリのdiffをとってみました。
+
+しばらくNext触ったりExpo触ったりNxpo触ったりして結局どうするのか決めていきたいです。
+

@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithubSquare, faTwitterSquare } from '@fortawesome/free-brands-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
-const Kamiza = () => {
+const Header = () => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   return (
     <>
@@ -59,4 +59,4 @@ const Kamiza = () => {
   )
 }
 
-export default Kamiza
+export default Header

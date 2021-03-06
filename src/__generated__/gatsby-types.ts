@@ -6659,30 +6659,25 @@ type PagesQueryQuery = { readonly allSitePage: { readonly nodes: ReadonlyArray<P
 type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_1_Query = { readonly allMdx: { readonly group: ReadonlyArray<Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>> } };
-
-type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type Unnamed_2_Query = { readonly allMdx: { readonly nodes: ReadonlyArray<(
+type Unnamed_1_Query = { readonly allMdx: { readonly nodes: ReadonlyArray<(
       Pick<Mdx, 'id' | 'slug'>
       & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'category' | 'tags' | 'title'>> }
     )> } };
 
-type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_2_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_3_Query = { readonly allMdx: { readonly group: ReadonlyArray<Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>> } };
+type Unnamed_2_Query = { readonly allMdx: { readonly group: ReadonlyArray<Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>> } };
 
 type QueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type QueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'author' | 'description'>> }>, readonly avatar: Maybe<{ readonly childImageSharp: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixedFragment> }> }> };
 
-type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
+type Unnamed_3_QueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type Unnamed_4_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'siteUrl'>> }> };
+type Unnamed_3_Query = { readonly allMdx: { readonly group: ReadonlyArray<Pick<MdxGroupConnection, 'fieldValue' | 'totalCount'>> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -6732,6 +6727,19 @@ type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
 
+type Unnamed_4_QueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type Unnamed_4_Query = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'siteUrl'>> }> };
+
+type PostsQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PostsQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'title'>
+      & { readonly social: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocial, 'name' | 'url'>>>> }
+    )> }>, readonly allBlogPost: { readonly nodes: ReadonlyArray<Pick<MdxBlogPost, 'id' | 'excerpt' | 'slug' | 'title' | 'date' | 'tags'>> } };
+
 type PostPageQueryQueryVariables = Exact<{
   id: Scalars['String'];
   previousId: Maybe<Scalars['String']>;
@@ -6753,14 +6761,6 @@ type PostPageQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<
           & GatsbyImageSharpFluidFragment
         )> }> }> }
   )>, readonly previous: Maybe<Pick<MdxBlogPost, 'id' | 'excerpt' | 'slug' | 'title' | 'date'>>, readonly next: Maybe<Pick<MdxBlogPost, 'id' | 'excerpt' | 'slug' | 'title' | 'date'>> };
-
-type PostsQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PostsQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'title'>
-      & { readonly social: Maybe<ReadonlyArray<Maybe<Pick<SiteSiteMetadataSocial, 'name' | 'url'>>>> }
-    )> }>, readonly allBlogPost: { readonly nodes: ReadonlyArray<Pick<MdxBlogPost, 'id' | 'excerpt' | 'slug' | 'title' | 'date' | 'tags'>> } };
 
 type Unnamed_5_QueryVariables = Exact<{ [key: string]: never; }>;
 

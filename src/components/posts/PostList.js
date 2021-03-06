@@ -1,6 +1,6 @@
 import React from "react"
 import OriginalPostList from "gatsby-theme-blog/src/components/post-list"
-import ShowMoreButton from "components/ShowMoreButton"
+import ShowMoreButton from "components/posts/ShowMoreButton"
 
 const PostList = ({ posts }) => {
   const [scope, setScope] = React.useState(10);

@@ -1,9 +1,9 @@
 import React from "react"
 
-const Date = (children) => {
+const Date = (props) => {
     return(
       <p className='text-xs mt-4'
-        {...children}
+        {...props}
       />
     );
 }

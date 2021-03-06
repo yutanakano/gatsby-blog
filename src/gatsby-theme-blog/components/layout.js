@@ -1,8 +1,8 @@
 import React from "react"
-import Header from "./header"
+import Header from "components/universal/Header"
 import useBlogThemeConfig from "gatsbyThemeBlog/hooks/configOptions"
 import Helmet from "react-helmet"
-import Footer from "./home-footer"
+import Footer from "components/universal/Footer"
 
 const Layout = ({ children }) => {
   const blogThemeConfig = useBlogThemeConfig()

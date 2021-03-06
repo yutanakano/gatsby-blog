@@ -2,7 +2,7 @@ import React from "react"
 
 import Layout from "./layout"
 import SEO from "./seo"
-import PostList from "components/PostList"
+import PostList from "components/posts/PostList"
 import TwitterCard from "../../../content/assets/icon.png"
 
 const Posts = ({ location, posts, siteTitle, socialLinks }) => (

@@ -6,12 +6,12 @@ import PostLayout from "components/post/Layout"
 
 import Layout from "./layout"
 import SEO from "./seo"
-import PostTitle from "./post-title"
-import PostDate from "./post-date"
-import PostFooter from "./post-footer"
-import PostHero from "./post-hero"
-
+import Bio from "./bio"
+import PostTitle from "components/post/Title"
+import PostDate from "components/post/Date"
+import PostHero from "components/post/Hero"
 import ShareButton from 'components/post/ShareButton'
+import PreviousNext from 'components/post/PreviousNext'
 
 const Post = ({
   data: {
@@ -49,7 +49,10 @@ const Post = ({
         </section>
       </article>
       <ShareButton author={author} siteUrl={siteUrl} slug={post.slug} title={post.title} />
-      <PostFooter {...{ previous, next }} />
+      <footer className='max-w-max'>
+        <Bio />
+        <PreviousNext previous={previous} next={next}/>
+      </footer>
     </main>
   </Layout>
 )

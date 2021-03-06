@@ -1,6 +1,6 @@
 import React from "react"
 
-const Copyright = () => {
+const Footer = () => {
   return(
     <footer className='w-full p-4 bg-gray-500 text-center'>
       © {new Date().getFullYear()}, 
@@ -10,4 +10,4 @@ const Copyright = () => {
   );
 }
 
-export default Copyright;
+export default Footer;

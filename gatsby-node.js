@@ -51,10 +51,10 @@ exports.createPages = ({ actions, graphql }) => {
     `).then(result => {
       result.data.allMdx.group.map(tag => {
         createPage({
-          path: `tags/${tag.fieldValue}`,
+          path: `tag/${tag.fieldValue}`,
           component: path.resolve("./src/templates/Tag.js"),
           context: {
-            tags: tag.fieldValue
+            tag: tag.fieldValue
           }
         });
       });

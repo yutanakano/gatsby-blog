@@ -7,7 +7,14 @@ import {
   TwitterIcon
 } from 'react-share';
 
-const ShareButton = ({author, siteUrl, slug, title}) => {
+type Props = Required<{
+  author: string
+  siteUrl: string
+  slug: string
+  title: string
+}>
+
+const ShareButton: React.FC<Props> = ({author, siteUrl, slug, title}) => {
   const via = author + '_jp'
   const url = siteUrl + slug
   return (

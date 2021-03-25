@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-const CategoryList = () => {
+const CategoryList: React.FC = () => {
   const { allMdx } = useStaticQuery(
     graphql`
       query {
@@ -18,7 +18,7 @@ const CategoryList = () => {
     <nav>
       <h1>カテゴリ一覧</h1>
       <ul>
-        {allMdx.group.map(category => (
+        {allMdx.group.map((category: { fieldValue: string | null | undefined; totalCount: React.ReactNode; }) => (
           <li key={category.fieldValue}>
             <Link to={`/categories/${category.fieldValue}/`}>
               {category.fieldValue} ({category.totalCount})

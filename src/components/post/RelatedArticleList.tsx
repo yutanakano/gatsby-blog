@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-const RelatedArticleList = ({ post }) => {
+const RelatedArticleList = ({ post }: {post:any}) => {
   const { allMdx } = useStaticQuery(
     graphql`
       query{
@@ -24,7 +24,7 @@ const RelatedArticleList = ({ post }) => {
       <h1>関連記事</h1>
       <ul>
         {
-          allMdx.nodes.map(node => {
+          allMdx.nodes.map((node: any) => {
             const relatedArticle = filter(node, post)
             if (relatedArticle.length) {
               return(getLink(relatedArticle))
@@ -36,7 +36,7 @@ const RelatedArticleList = ({ post }) => {
   );
 };
 
-function filter(node, post) {
+function filter(node: { frontmatter: { tags: string | any[]; }; slug: any; }, post: { tags: string | any[]; slug: string; }) {
   const relatedArticle = [];
   for(let i = 0; i < post.tags.length; i++) {
     // 一致するタグを含んでいる && relatedArticleが空 && 同じ記事ではない
@@ -47,7 +47,7 @@ function filter(node, post) {
   return(relatedArticle)
 }
 
-function getLink(relatedArticle) {
+function getLink(relatedArticle: any[]) {
   return(
     relatedArticle.map(node=>{
       return(

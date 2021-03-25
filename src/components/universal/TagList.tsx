@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
-const TagList = () => {
+const TagList: React.FC = () => {
   const { allMdx } = useStaticQuery(
     graphql`
       query {
@@ -18,7 +18,7 @@ const TagList = () => {
     <nav>
       <h1>タグ一覧</h1>
       <ul>
-        {allMdx.group.map(tag => (
+        {allMdx.group.map((tag: { fieldValue: string | null | undefined; totalCount: React.ReactNode; }) => (
           <li key={tag.fieldValue}>
             <Link to={`/tag/${tag.fieldValue}/`}>
               {tag.fieldValue} ({tag.totalCount})

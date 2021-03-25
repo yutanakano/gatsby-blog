@@ -4,7 +4,7 @@ type Props = Required<{
   display: boolean
   chunk: number
   scope: number
-  setScope: (scope: number) => number
+  setScope: (scope: number) => void
 }>
 
 const ShowMoreButton: React.FC<Props> = ({ display, chunk, scope, setScope }) => {

@@ -1,8 +1,8 @@
 import React from "react"
 import OriginalPostList from "gatsby-theme-blog/src/components/post-list"
-import ShowMoreButton from "components/posts/ShowMoreButton"
+import ShowMoreButton from "../../../src/components/posts/ShowMoreButton"
 
-const PostList = ({ posts }) => {
+const PostList = ({ posts }: {posts: any}) => {
   const [scope, setScope] = React.useState(10);
   const chunk = 5  
   return(

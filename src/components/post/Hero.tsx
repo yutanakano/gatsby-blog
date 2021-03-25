@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "gatsby-image"
 
-const Hero = ({post}) => {
+const Hero = ({ post }: {post: any}) => {
   return(
     <>
       {post?.image?.childImageSharp && (

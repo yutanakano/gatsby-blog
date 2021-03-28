@@ -32,7 +32,7 @@ exports.createPages = ({ actions, graphql }) => {
       result.data.allMdx.group.map(category => {
         createPage({
           path: `categories/${category.fieldValue}`,
-          component: path.resolve("./src/templates/Category.js"),
+          component: path.resolve("./src/templates/Category.tsx"),
           context: {
             category: category.fieldValue
           }
@@ -52,7 +52,7 @@ exports.createPages = ({ actions, graphql }) => {
       result.data.allMdx.group.map(tag => {
         createPage({
           path: `tag/${tag.fieldValue}`,
-          component: path.resolve("./src/templates/Tag.js"),
+          component: path.resolve("./src/templates/Tag.tsx"),
           context: {
             tag: tag.fieldValue
           }

@@ -5,17 +5,17 @@ import Layout from "../gatsby-theme-blog/components/layout"
 import SEO from "../gatsby-theme-blog/components/seo"
 import TwitterCard from "../../content/assets/icon.png"
 
-const Tag = ({ location, pageContext, data }) => {
-  const { tag } = pageContext;
+const Category = ({ location, pageContext, data }: { location: any; pageContext: any; data: any; }) => {
+  const { category } = pageContext;
   const { edges } = data.allMdx;
 
   return (
     <Layout>
-      <SEO location={location} title={`${tag}の記事一覧`} imageSource={TwitterCard}/>
+      <SEO location={location} title={`${category}の記事一覧`} imageSource={TwitterCard}/>
       <main className='container mx-auto flex-grow'>
-        {tag}の記事一覧
+        {category}の記事一覧
         {
-          edges.map((edge) => {
+          edges.map((edge:any) => {
             return(
               <div key={`${edge.node.frontmatter.id}`}>
                 <Link to={`/${edge.node.slug}`}>
@@ -31,9 +31,9 @@ const Tag = ({ location, pageContext, data }) => {
 };
 
 export const query = graphql`
-query ($tag: [String]) {
+query ($category: [String]) {
     allMdx(
-      filter: { frontmatter: { tags: { in: $tag } } },
+      filter: { frontmatter: { category: { in: $category } } },
       sort: { order: DESC, fields: [frontmatter___date] }
     ) {
       edges {
@@ -52,4 +52,4 @@ query ($tag: [String]) {
   }
 `
 
-export default Tag;
+export default Category;
